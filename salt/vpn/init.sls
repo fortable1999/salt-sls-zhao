@@ -4,6 +4,9 @@
     - installed
 {% endfor %}
 
+include:
+  - vpn.clients
+
 openvpn:
   pkg:
     - installed
