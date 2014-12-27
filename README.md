@@ -17,8 +17,8 @@ sh install_salt.sh git develop
 
 ## get sls tree
 ```
-cd /svr
-git clone git@github.com:fortable1999/salt-sls-zhao.git
+cd /srv
+git clone https://github.com/fortable1999/salt-sls-zhao.git .
 ```
 
 ## salt master start
@@ -32,6 +32,15 @@ vi /etc/salt/minion
 # edit server host
 # edit id
 salt-minion
+```
+
+## accept minion key
+```
+# check all keys
+salt-key -L
+
+# accept all keys
+salt-key -A
 ```
 
 ## execute SLS on minion
