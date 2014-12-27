@@ -1,0 +1,4 @@
+base:
+  "*":
+    - vpn
+    - tools
