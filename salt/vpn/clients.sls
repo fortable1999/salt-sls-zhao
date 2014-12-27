@@ -1,5 +1,5 @@
-vpnclientuser:
+vpnclient:
   user.present:
     - fullname: VPN nologin users
-    - shell: /bin/bash
-    - password: VPNCLIENTUSER
+    - shell: /bin/false
+    - password: VPNCLIENT
