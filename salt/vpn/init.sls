@@ -61,3 +61,13 @@ openvpn:
         key_client: keys/server.key
     - context:
         port: 1194
+
+{% for filename in 'server.key', 'server.crt', 'ca.crt', 'dh2048.pem' %}
+/etc/openvpn/keys/{{ filename }}:
+  file.managed:
+    - source: salt://vpn/keys/{{ filename }}
+    - user: root
+    - group: root
+    - mode: 600
+    - makedirs: True
+{% endfor %}
