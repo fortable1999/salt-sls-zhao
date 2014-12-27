@@ -1,4 +1,5 @@
 base:
   "*":
     - vpn
+    - ssh
     - tools

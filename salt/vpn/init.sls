@@ -1,14 +1,8 @@
-udev:
+{% for package in 'udev', 'lzop', 'easy-rsa' %}
+{{ package }}:
   pkg:
     - installed
-
-lzop:
-  pkg:
-    - installed
-
-easy-rsa:
-  pkg:
-    - installed
+{% endfor %}
 
 openvpn:
   pkg:
