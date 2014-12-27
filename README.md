@@ -21,12 +21,12 @@ cd /svr
 git clone git@github.com:fortable1999/salt-sls-zhao.git
 ```
 
-## start salt server
+## salt master start
 ```
 salt-master
 ```
 
-## start salt client
+## salt minion start
 ```
 vi /etc/salt/minion
 # edit server host
