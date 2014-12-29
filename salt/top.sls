@@ -4,3 +4,4 @@ base:
     - ssh
     - tools
     - web
+    - stunnel
