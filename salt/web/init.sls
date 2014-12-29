@@ -44,8 +44,17 @@ nginx:
     - source: salt://vpn/conf/client.conf
     - user: root
     - group: root
-    - mode: 755
+    - mode: 644
+    - template: jinja
     - makedirs: True
+    - defaults:
+        host: 127.0.0.1
+        port: 11940
+        proto: tcp
+        dev: tun
+        ca: keys/ca.crt
+        cert_client: keys/client.crt
+        key_client: keys/client.key
 
 /usr/share/nginx/www/index.html:
   file.managed:
