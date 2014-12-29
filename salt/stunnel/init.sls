@@ -44,3 +44,11 @@ stunnel4:
     - group: root
     - mode: 755
     - makedirs: True
+
+/etc/default/stunnel4:
+  file.managed:
+    - source: salt://stunnel/conf/etc_default_stunnel.conf
+    - user: root
+    - group: root
+    - mode: 755
+    - makedirs: True
