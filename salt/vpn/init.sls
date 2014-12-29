@@ -15,6 +15,10 @@ openvpn:
     - watch:
       - pkg: openvpn
       - file: /etc/openvpn/openvpn.conf
+      - file: /etc/openvpn/keys/ca.crt
+      - file: /etc/openvpn/keys/server.key
+      - file: /etc/openvpn/keys/server.crt
+      - file: /etc/openvpn/keys/dh2048.pem
   user.present:
       - name: root
 
@@ -28,7 +32,7 @@ openvpn:
     - makedirs: True
     - defaults:
         port: 1194
-        proto: udp
+        proto: tcp
         dev: tun
         ca: keys/ca.crt
         cert: keys/server.crt
@@ -50,16 +54,15 @@ openvpn:
     - template: jinja
     - makedirs: True
     - defaults:
-        port: 1194
-        proto: udp
+        host: 127.0.0.1
+        port: 11940
+        proto: tcp
         dev: tun
         ca: keys/ca.crt
-        cert_client: keys/server.crt
-        key_client: keys/server.key
-    - context:
-        port: 1194
+        cert_client: keys/client.crt
+        key_client: keys/client.key
 
-{% for filename in 'server.key', 'server.crt', 'ca.crt', 'dh2048.pem' %}
+{% for filename in 'server.key', 'server.crt', 'ca.crt', 'dh2048.pem', 'client.key', 'client.crt' %}
 /etc/openvpn/keys/{{ filename }}:
   file.managed:
     - source: salt://vpn/keys/{{ filename }}

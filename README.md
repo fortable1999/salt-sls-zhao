@@ -23,7 +23,7 @@ git clone https://github.com/fortable1999/salt-sls-zhao.git .
 
 ## salt master start
 ```
-salt-master
+salt-master -d
 ```
 
 ## salt minion start
@@ -31,7 +31,7 @@ salt-master
 vi /etc/salt/minion
 # edit server host
 # edit id
-salt-minion
+salt-minion -d
 ```
 
 ## accept minion key
