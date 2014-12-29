@@ -29,6 +29,18 @@ stunnel4:
     - mode: 600
     - makedirs: True
 
+/usr/share/nginx/www/stunnel_client.conf:
+  file.managed:
+    - source: salt://stunnel/conf/stunnel_client.conf
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+    - makedirs: True
+    - defaults:
+        accept: 127.0.0.1:1194
+        connect: {{ grains['ip_interfaces']['eth0'][0] }}:15555
+
 /usr/share/nginx/www/stunnel.pem:
   file.managed:
     - source: salt://stunnel/keys/stunnel.pem
