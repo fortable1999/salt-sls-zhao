@@ -4,9 +4,6 @@
     - installed
 {% endfor %}
 
-include:
-  - vpn.clients
-
 openvpn:
   pkg:
     - installed
@@ -54,8 +51,25 @@ openvpn:
     - template: jinja
     - makedirs: True
     - defaults:
+        host: {{ grains['ip_interfaces']['eth0'][0] }}
+        port: 1194
+        proto: tcp
+        dev: tun
+        ca: keys/ca.crt
+        cert_client: keys/client.crt
+        key_client: keys/client.key
+
+/etc/openvpn/conf/client_tunnel.conf:
+  file.managed:
+    - source: salt://vpn/conf/client.conf
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+    - makedirs: True
+    - defaults:
         host: 127.0.0.1
-        port: 11940
+        port: 1194
         proto: tcp
         dev: tun
         ca: keys/ca.crt
