@@ -43,6 +43,12 @@ salt-key -L
 salt-key -A
 ```
 
+## upgrade packages
+```
+salt '*' pkg.refresh_db
+salt '*' pkg.list_upgrades
+```
+
 ## execute SLS on minion
 ```
 salt '*' state.highstate
