@@ -1,2 +1,2 @@
-V	241226182544Z		01	unknown	/C=US/ST=CA/L=SanFrancisco/O=Fort-Funston/OU=MyOrganizationalUnit/CN=server/name=EasyRSA/emailAddress=me@myhost.mydomain
-V	241226182551Z		02	unknown	/C=US/ST=CA/L=SanFrancisco/O=Fort-Funston/OU=MyOrganizationalUnit/CN=client/name=EasyRSA/emailAddress=me@myhost.mydomain
+V	241228025659Z		01	unknown	/C=US/ST=CA/L=SanFrancisco/O=Fort-Funston/OU=MyOrganizationalUnit/CN=server/name=EasyRSA/emailAddress=me@myhost.mydomain
+V	241228025712Z		02	unknown	/C=US/ST=CA/L=SanFrancisco/O=Fort-Funston/OU=MyOrganizationalUnit/CN=client/name=EasyRSA/emailAddress=me@myhost.mydomain
