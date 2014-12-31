@@ -18,16 +18,6 @@ openvpn:
       - file: /etc/openvpn/keys/dh2048.pem
   user.present:
       - name: root
-  iptables.append:
-    - table: nat
-    - chain: POSTROUTING
-    - jump: MASQUERADE
-    - match:
-        - comment
-    - comment: "Allow VPN forward gateway"
-    - connstate: NEW
-    - source: '10.8.0.0/16'
-    - save: True
 
 /etc/openvpn/openvpn.conf:
   file.managed:
