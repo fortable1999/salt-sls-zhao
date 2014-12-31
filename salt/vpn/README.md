@@ -20,7 +20,7 @@ source vars
 ./build-key-server server
 
 # build client key pair
-./build-key-server client1
+./build-key client
 
 # generate Diffie-Hellman key
 ./build-dh
