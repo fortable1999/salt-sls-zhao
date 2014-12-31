@@ -25,3 +25,13 @@ source vars
 # generate Diffie-Hellman key
 ./build-dh
 ```
+
+# restart networking
+```
+salt '*' cmd.run '/etc/init.d/networking restart'
+```
+
+# enable NAT
+```
+salt '*' iptables.append nat POSTROUTING rule='-s 10.8.0.0/16 -o eth0 -j MASQUERADE'
+```

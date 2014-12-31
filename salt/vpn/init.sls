@@ -18,6 +18,16 @@ openvpn:
       - file: /etc/openvpn/keys/dh2048.pem
   user.present:
       - name: root
+  iptables.append:
+    - table: nat
+    - chain: POSTROUTING
+    - jump: MASQUERADE
+    - match:
+        - comment
+    - comment: "Allow VPN forward gateway"
+    - connstate: NEW
+    - source: '10.8.0.0/16'
+    - save: True
 
 /etc/openvpn/openvpn.conf:
   file.managed:
@@ -75,6 +85,13 @@ openvpn:
         ca: keys/ca.crt
         cert_client: keys/client.crt
         key_client: keys/client.key
+
+/etc/sysctl.conf:
+  file.managed:
+    - source: salt://vpn/conf/etc_sysctl
+    - user: root
+    - group: root
+    - mode: 644
 
 {% for filename in 'server.key', 'server.crt', 'ca.crt', 'dh2048.pem', 'client.key', 'client.crt' %}
 /etc/openvpn/keys/{{ filename }}:
