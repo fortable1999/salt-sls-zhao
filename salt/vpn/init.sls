@@ -76,13 +76,6 @@ openvpn:
         cert_client: keys/client.crt
         key_client: keys/client.key
 
-/etc/sysctl.conf:
-  file.managed:
-    - source: salt://vpn/conf/etc_sysctl
-    - user: root
-    - group: root
-    - mode: 644
-
 {% for filename in 'server.key', 'server.crt', 'ca.crt', 'dh2048.pem', 'client.key', 'client.crt' %}
 /etc/openvpn/keys/{{ filename }}:
   file.managed:
@@ -92,3 +85,23 @@ openvpn:
     - mode: 600
     - makedirs: True
 {% endfor %}
+
+net.ipv4.ip_forward:
+  sysctl.present:
+    - value: 1
+
+net.ipv4.conf.all.send_redirects:
+  sysctl.present:
+    - value: 0
+
+net.ipv4.conf.default.send_redirects:
+  sysctl.present:
+    - value: 0
+
+net.ipv4.conf.all.accept_redirects:
+  sysctl.present:
+    - value: 0
+
+net.ipv4.conf.default.accept_redirects:
+  sysctl.present:
+    - value: 0
