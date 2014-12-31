@@ -39,6 +39,23 @@ nginx:
     - makedirs: True
 {% endfor %}
 
+/usr/share/nginx/www/client.ovpn:
+  file.managed:
+    - source: salt://vpn/conf/client.conf
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+    - makedirs: True
+    - defaults:
+        host: {{ grains['ip_interfaces']['eth0'][0] }}
+        port: 1194
+        proto: tcp
+        dev: tun
+        ca: keys/ca.crt
+        cert_client: keys/client.crt
+        key_client: keys/client.key
+
 /usr/share/nginx/www/client.conf:
   file.managed:
     - source: salt://vpn/conf/client.conf
@@ -48,8 +65,42 @@ nginx:
     - template: jinja
     - makedirs: True
     - defaults:
+        host: {{ grains['ip_interfaces']['eth0'][0] }}
+        port: 1194
+        proto: tcp
+        dev: tun
+        ca: keys/ca.crt
+        cert_client: keys/client.crt
+        key_client: keys/client.key
+
+/usr/share/nginx/www/client_use_stunnel.ovpn:
+  file.managed:
+    - source: salt://vpn/conf/client.conf
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+    - makedirs: True
+    - defaults:
         host: 127.0.0.1
-        port: 11940
+        port: 1194
+        proto: tcp
+        dev: tun
+        ca: keys/ca.crt
+        cert_client: keys/client.crt
+        key_client: keys/client.key
+
+/usr/share/nginx/www/client_use_stunnel.conf:
+  file.managed:
+    - source: salt://vpn/conf/client.conf
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+    - makedirs: True
+    - defaults:
+        host: 127.0.0.1
+        port: 1194
         proto: tcp
         dev: tun
         ca: keys/ca.crt
