@@ -8,9 +8,21 @@
 <a href="./client.key" download>client.key</a>
 <a href="./client.crt" download>client.crt</a>
 <a href="./ca.crt" download>ca.crt</a>
-<a href="./stunnel_client.conf" download>stunnel_client.conf</a>
+<a href="./stunnel.conf" download>stunnel.conf</a>
 
 <h1>how to use:</h1>
-<p>under building</p>
+<h2>1. install stunnel</h2>
+<p>i. download stunnel from official site: <a href="https://www.stunnel.org/downloads.html">https://www.stunnel.org/downloads.html</a> for windows: <a href="https://www.stunnel.org/downloads/stunnel-5.09-installer.exe">https://www.stunnel.org/downloads/stunnel-5.09-installer.exe</a></p>
+<p>ii. install stunnel</p>
+<p>iii. download <a href="./stunnel.conf">stunnel.conf</a></p>
+<p>ix. replace same name file in stunnel directory(C:\Program Files\stunnel\)</p>
+<p>x. restart stunnel</p>
+<h2>1. install openvpn</h2>
+<p>i. download openvpn from official site: <a href="https://openvpn.net/index.php/open-source/downloads.html">https://openvpn.net/index.php/open-source/downloads.html</a> for 32-bit windows client: <a href="http://swupdate.openvpn.org/community/releases/openvpn-install-2.3.6-I001-i686.exe">http://swupdate.openvpn.org/community/releases/openvpn-install-2.3.6-I001-i686.exe</a></p>
+<p>ii. install openvpn</p>
+<p>iii. download <a href="./client.ovpn">client.ovpn</a>, <a href="./client.key">client.key</a>, <a href="./client.crt">client.crt</a>,<a href="./ca.crt">ca.crt</a></p>
+<p>ix. put client.ovpn openvpn configure directory(C:\Program Files\OpenVPN\config\)</p>
+<p>x. make a keys/ directory under C:\Program Files\OpenVPN\config\, and put client.keys client.crt ca.crt into it</p>
+<p>xi. start openvpn. use client.conf to connect</p>
 </body>
 </html>

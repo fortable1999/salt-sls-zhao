@@ -41,7 +41,7 @@ stunnel4:
         accept: 127.0.0.1:1194
         connect: {{ grains['ip_interfaces']['eth0'][0] }}:15555
 
-/usr/share/nginx/www/stunnel_client.conf:
+/usr/share/nginx/www/stunnel.conf:
   file.managed:
     - source: salt://stunnel/conf/stunnel_client.conf
     - user: root
