@@ -48,6 +48,7 @@ openvpn:
         redirect_gateway: true
         openvpn_status: /var/run/openvpn/openvpn-status.log
         log: /var/log/openvpn.log
+        client_cert_not_required: False
     - context:
         port: 1194
 
@@ -67,6 +68,7 @@ openvpn:
         ca: keys/ca.crt
         cert_client: keys/client.crt
         key_client: keys/client.key
+        client_cert_not_required: False
 
 /etc/openvpn/conf/client_tunnel.conf:
   file.managed:
@@ -94,6 +96,14 @@ openvpn:
     - mode: 600
     - makedirs: True
 {% endfor %}
+
+/etc/pam.d/openvpn:
+  file.managed:
+    - source: salt://vpn/conf/pam_openvpn
+    - user: root
+    - group: root
+    - mode: 644
+    - makedirs: True
 
 net.ipv4.ip_forward:
   sysctl.present:
