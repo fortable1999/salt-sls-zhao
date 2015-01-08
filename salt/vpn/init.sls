@@ -65,6 +65,14 @@ openvpn:
     - makedirs: True
 {% endfor %}
 
+/etc/pam.d/openvpn:
+  file.managed:
+    - source: salt://vpn/conf/pam_openvpn
+    - user: root
+    - group: root
+    - mode: 644
+    - makedirs: True
+
 net.ipv4.ip_forward:
   sysctl.present:
     - value: 1

@@ -8,6 +8,10 @@ for zhao's. contact fortable1999@gmail.com
 4. [salt minion start](#salt-minion-start)
 4. [execute SLS on minion](#execute-sls-on-minion)
 
+## todo list:
+1. use username/password auth
+2. multi-client connection support
+
 ## install salt
 ```
 sudo su -
@@ -18,9 +22,7 @@ sh install_salt.sh git develop
 ## get sls tree
 ```
 cd /srv
-git clone https://github.com/fortable1999/salt-sls-zhao.git .
-```
-
+git clone https://github.com/fortable1999/salt-sls-zhao.git .  ``` 
 ## salt master start
 ```
 salt-master -d
