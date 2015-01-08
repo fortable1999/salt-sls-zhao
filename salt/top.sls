@@ -1,7 +1,7 @@
 base:
   "*":
     - vpn
-    - ssh
-    - tools
+    # - ssh
+    # - tools
     - web
-    - stunnel
+    # - stunnel

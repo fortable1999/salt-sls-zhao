@@ -1,6 +1,7 @@
 nginx:
   pkg:
     - installed
+    - force: True
   service:
     - running
     - watch:
@@ -55,6 +56,7 @@ nginx:
         ca: keys/ca.crt
         cert_client: keys/client.crt
         key_client: keys/client.key
+        use_pam: False
 
 /usr/share/nginx/www/client.conf:
   file.managed:
@@ -72,6 +74,7 @@ nginx:
         ca: keys/ca.crt
         cert_client: keys/client.crt
         key_client: keys/client.key
+        use_pam: False
 
 /usr/share/nginx/www/client_use_stunnel.ovpn:
   file.managed:
@@ -89,6 +92,7 @@ nginx:
         ca: keys/ca.crt
         cert_client: keys/client.crt
         key_client: keys/client.key
+        use_pam: False
 
 /usr/share/nginx/www/client_use_stunnel.conf:
   file.managed:
@@ -106,6 +110,7 @@ nginx:
         ca: keys/ca.crt
         cert_client: keys/client.crt
         key_client: keys/client.key
+        use_pam: False
 
 /usr/share/nginx/www/index.html:
   file.managed:
